@@ -1,0 +1,7 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: AirshipFunction
+metadata:
+  name: p03
+  namespace: pegleg
+spec:
