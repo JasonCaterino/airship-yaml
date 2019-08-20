@@ -6,3 +6,6 @@ resources:
 - ../common
 - ../../global
 - ../../composites/network/sriov
+
+- ./config/endpoints.yaml
+- ./config/service_accounts.yaml
