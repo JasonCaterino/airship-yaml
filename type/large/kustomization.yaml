@@ -4,6 +4,5 @@ kind: Kustomization
 
 resources:
 - ../common
-
-- ../../functions/auth/aa02
-- ../../functions/backend/b02
+- ../../global
+- ../../composites/network/tungsten
