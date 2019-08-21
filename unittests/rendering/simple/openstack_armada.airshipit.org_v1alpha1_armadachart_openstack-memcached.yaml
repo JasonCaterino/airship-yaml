@@ -1,4 +1,3 @@
----
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -13,7 +12,11 @@ spec:
   install:
     no_hooks: false
   release: openstack-memcached
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.memcached)
+  source:
+    location: https://opendev.org/openstack/openstack-helm-infra
+    reference: 0714b9d7ae08a88565d2c81c1b185fd77efaafca
+    subpath: memcached
+    type: git
   upgrade:
     no_hooks: false
     pre:
@@ -23,9 +26,17 @@ spec:
         type: job
   values:
     endpoints:
-      oslo_cache: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+      oslo_cache:
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.memcached)
+      tags: {}
     labels:
       server:
         node_selector_key: openstack-control-plane

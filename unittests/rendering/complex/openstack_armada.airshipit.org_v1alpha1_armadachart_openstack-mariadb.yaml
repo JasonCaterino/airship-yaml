@@ -1,4 +1,3 @@
----
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -13,7 +12,12 @@ spec:
   install:
     no_hooks: false
   release: openstack-mariadb
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.mariadb)
+  source:
+    location: https://opendev.org/openstack/openstack-helm-infra
+    reference: 0714b9d7ae08a88565d2c81c1b185fd77efaafca
+    subpath: mariadb
+    type: git
+  target_state: uninitialized
   upgrade:
     no_hooks: false
     pre:
@@ -26,17 +30,40 @@ spec:
       oslo_db:
         auth:
           admin:
-            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.oslo_db.admin)
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
+            username: root
           exporter:
             password: $(DeckhandPassphrase.osh-oslo-db-exporter-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
+        path: /DB_NAME
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       prometheus_mysql_exporter:
         auth:
-          user: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.prometheus_mysql_exporter.user)
-        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.prometheus_mysql_exporter)
+          user:
+            username: osh-oslodb-exporter
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: mysql-exporter
+        namespace: openstack
+        path:
+          default: /metrics
+        port:
+          metrics:
+            default: 9104
+        scheme:
+          default: http
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.mariadb)
+      tags: {}
     labels:
       prometheus_mysql_exporter:
         node_selector_key: openstack-control-plane
@@ -51,17 +78,3 @@ spec:
     labels:
       release_group: airship-openstack-mariadb
     timeout: 900
-  target_state: uninitialized
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  name: openstack-mariadb-htk
-  namespace: pegleg
-spec:
-  chart_name: openstack-mariadb-htk
-  dependencies: []
-  release: openstack-mariadb-htk
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.mariadb-htk)
-  values: {}
-  target_state: uninitialized

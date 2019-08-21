@@ -1,4 +1,3 @@
----
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -13,7 +12,12 @@ spec:
   install:
     no_hooks: false
   release: keystone
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.keystone)
+  source:
+    location: https://opendev.org/openstack/openstack-helm
+    reference: 47cb52b67c016aa364db9599db39fef719e4ae07
+    subpath: keystone
+    type: git
+  target_state: uninitialized
   upgrade:
     no_hooks: false
     post:
@@ -82,7 +86,7 @@ spec:
           keys:
           - stdout
           - stderr
-          - 'null'
+          - "null"
           - fluent
         logger_amqp:
           handlers: stderr
@@ -118,37 +122,97 @@ spec:
           - root
           - keystone
     endpoints:
-      fluentd: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.fluentd)
+      fluentd:
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: fluentd-logging
+        name: fluentd
+        namespace: osh-infra
+        path:
+          default: ""
+        port:
+          metrics:
+            default: 24220
+          service:
+            default: 24224
+        scheme:
+          default: http
       identity:
         auth:
           admin:
-            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+            project_domain_name: default
+            project_name: admin
+            region_name: $(PeglegCommonSoftwareConfig.common-software-config.spec.osh.region_name)
+            user_domain_name: default
+            username: admin
+        host_fqdn_override:
+          default: ""
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           keystone:
-            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_db)
+            database: keystone
             password: $(DeckhandPassphrase.osh-keystone-oslo-db-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
-        path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_db.database)
+            username: keystone
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
+        path: /keystone
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
-            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-admin-password.spec)
+            username: keystone-rabbitmq-admin
           keystone:
-            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.keystone)
             password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_oslo_messaging)
+            username: keystone-rabbitmq-user
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: keystone-rabbitmq
+        namespace: openstack
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.keystone)
+      tags: {}
     labels:
       api:
         node_selector_key: openstack-control-plane
@@ -163,4 +227,3 @@ spec:
     labels:
       release_group: airship-keystone
     timeout: 900
-  target_state: uninitialized

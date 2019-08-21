@@ -1,4 +1,3 @@
----
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -12,7 +11,12 @@ spec:
   install:
     no_hooks: false
   release: ucp-rabbitmq
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq)
+  source:
+    location: https://opendev.org/openstack/openstack-helm-infra
+    reference: 09ae22d8493d5cef34c80cb69117c69dc0f2dc8e
+    subpath: rabbitmq
+    type: git
+  target_state: uninitialized
   upgrade:
     no_hooks: false
     pre:
@@ -24,13 +28,21 @@ spec:
     endpoints:
       oslo_messaging:
         auth:
-          # erlang_cookie: $(DeckhandPassphrase.ucp-rabbitmq-erlang-cookie.spec)
           user:
-            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_messaging.admin)
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
+            username: rabbitmq
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: rabbitmq
+        namespace: ""
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+        scheme: rabbit
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.rabbitmq)
+      tags: {}
     labels:
       prometheus_rabbitmq_exporter:
         node_selector_key: ucp-control-plane
@@ -47,4 +59,3 @@ spec:
     resources:
     - type: statefulset
     timeout: 300
-  target_state: uninitialized

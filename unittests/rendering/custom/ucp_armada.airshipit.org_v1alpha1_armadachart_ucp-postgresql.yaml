@@ -1,4 +1,3 @@
----
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -12,7 +11,12 @@ spec:
   install:
     no_hooks: false
   release: ucp-postgresql
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.postgresql)
+  source:
+    location: https://opendev.org/openstack/openstack-helm-infra
+    reference: 5e1ecd9840397bf9e8829ce0d98fcb721db1b74e
+    subpath: postgresql
+    type: git
+  target_state: uninitialized
   upgrade:
     no_hooks: false
     post:
@@ -34,11 +38,20 @@ spec:
       postgresql:
         auth:
           admin:
-            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
+            username: postgres
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: postgresql
+        name: postgresql
+        path: /DB_NAME
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.postgresql)
+      tags: {}
     labels:
       server:
         node_selector_key: ucp-control-plane
@@ -47,4 +60,3 @@ spec:
     labels:
       release_group: airship-ucp-postgresql
     timeout: 600
-  target_state: uninitialized

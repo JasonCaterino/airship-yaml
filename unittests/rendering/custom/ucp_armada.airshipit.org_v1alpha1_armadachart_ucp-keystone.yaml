@@ -1,4 +1,3 @@
----
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -13,7 +12,12 @@ spec:
   install:
     no_hooks: false
   release: ucp-keystone
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.keystone)
+  source:
+    location: https://opendev.org/openstack/openstack-helm
+    reference: 0e1c296101ffc19fae4ec5851b786ad33cd00f41
+    subpath: keystone
+    type: git
+  target_state: uninitialized
   upgrade:
     no_hooks: false
     post:
@@ -57,7 +61,7 @@ spec:
           keys:
           - stdout
           - stderr
-          - 'null'
+          - "null"
           - fluent
         logger_amqp:
           handlers: stderr
@@ -93,33 +97,92 @@ spec:
           - root
           - keystone
     endpoints:
-      fluentd: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.fluentd)
+      fluentd:
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: fluentd-logging
+        name: fluentd
+        namespace: osh-infra
+        path:
+          default: ""
+        port:
+          metrics:
+            default: 24220
+          service:
+            default: 24224
+        scheme:
+          default: http
       identity:
         auth:
           admin:
-            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
-      oslo_cache: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_cache)
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
+        host_fqdn_override:
+          default: ""
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
+      oslo_cache:
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: memcached
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.ucp-oslo-db-admin-password.spec)
           keystone:
-            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_db)
+            database: keystone
             password: $(DeckhandPassphrase.ucp-keystone-oslo-db-password.spec)
-        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db)
-        path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_db.database)
+            username: keystone
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
+        path: /keystone
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
+            username: rabbitmq
           keystone:
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
-          parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_messaging)
-        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
+            username: keystone
+        host_fqdn_override:
+          default: ""
+        hosts:
+          default: rabbitmq
+        namespace: ""
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+        scheme: rabbit
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.keystone)
+      tags: {}
     labels:
       api:
         node_selector_key: ucp-control-plane
@@ -134,4 +197,3 @@ spec:
     labels:
       release_group: airship-ucp-keystone
     timeout: 600
-  target_state: uninitialized

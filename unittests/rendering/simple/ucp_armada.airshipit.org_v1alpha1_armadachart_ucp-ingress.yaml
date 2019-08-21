@@ -1,4 +1,3 @@
----
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -12,7 +11,12 @@ spec:
   install:
     no_hooks: false
   release: ingress
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress)
+  source:
+    location: https://opendev.org/openstack/openstack-helm-infra
+    reference: 596732f16bf7cfe681ce0bb2d62e529bea5eea82
+    subpath: ingress
+    type: git
+  target_state: uninitialized
   upgrade:
     no_hooks: false
     pre:
@@ -25,7 +29,7 @@ spec:
       ingress:
         proxy-body-size: 20m
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.ingress)
+      tags: {}
     labels:
       error_server:
         node_selector_key: ucp-control-plane
@@ -37,7 +41,7 @@ spec:
       ingress:
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 20m
-          nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
     pod:
       replicas:
         error_page: 2
@@ -46,4 +50,3 @@ spec:
     labels:
       release_group: airship-ingress
     timeout: 300
-  target_state: uninitialized
