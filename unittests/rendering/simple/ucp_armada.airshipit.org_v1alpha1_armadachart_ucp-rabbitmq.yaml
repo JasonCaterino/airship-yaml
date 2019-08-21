@@ -42,7 +42,8 @@ spec:
             default: 5672
         scheme: rabbit
     images:
-      tags: {}
+      tags:
+        rabbitmq: quay.io/airshipit/rabbitmq:FOOBAR
     labels:
       prometheus_rabbitmq_exporter:
         node_selector_key: ucp-control-plane

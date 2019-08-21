@@ -44,7 +44,8 @@ spec:
             default: 4567
         scheme: mysql+pymysql
     images:
-      tags: {}
+      tags:
+        mariadb: quay.io/airshipit/mariadb:FOOBAR
     labels:
       error_server:
         node_selector_key: ucp-control-plane

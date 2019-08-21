@@ -35,7 +35,8 @@ spec:
           memcache:
             default: 11211
     images:
-      tags: {}
+      tags:
+        memcached: quay.io/airshipit/memcached:FOOBAR
     labels:
       server:
         node_selector_key: ucp-control-plane

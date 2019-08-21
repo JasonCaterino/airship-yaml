@@ -5,3 +5,6 @@ kind: Kustomization
 resources:
 - ../common
 - ../../type/small
+
+patchesStrategicMerge:
+- ./versions.yaml

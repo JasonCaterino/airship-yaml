@@ -1,0 +1,15 @@
+---
+apiVersion: pegleg.airshipit.org/v1alpha1
+kind: PeglegSoftwareVersions
+metadata:
+  name: software-versions
+  namespace: pegleg
+spec:
+  images:
+    ucp:
+      mariadb:
+        mariadb: quay.io/airshipit/mariadb:FOOBAR
+      memcached:
+        memcached: quay.io/airshipit/memcached:FOOBAR
+      rabbitmq:
+        rabbitmq: quay.io/airshipit/rabbitmq:FOOBAR
