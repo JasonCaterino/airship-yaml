@@ -7,7 +7,7 @@ metadata:
   namespace: ucp
 spec:
   chart_name: ucp-keystone-memcached
-  dependencies: null
+  dependencies: []
   install:
     no_hooks: false
   release: ucp-keystone-memcached

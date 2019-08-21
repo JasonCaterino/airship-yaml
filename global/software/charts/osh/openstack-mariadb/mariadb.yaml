@@ -52,16 +52,3 @@ spec:
       release_group: airship-openstack-mariadb
     timeout: 900
   target_state: uninitialized
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  name: openstack-mariadb-htk
-  namespace: pegleg
-spec:
-  chart_name: openstack-mariadb-htk
-  dependencies: []
-  release: openstack-mariadb-htk
-  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.mariadb-htk)
-  values: {}
-  target_state: uninitialized

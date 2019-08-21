@@ -4,4 +4,5 @@ kind: AirshipFunction
 metadata:
   name: aa03
   namespace: pegleg
-spec:
+spec: |-
+  aa03 string spec
