@@ -5,6 +5,10 @@ kind: Kustomization
 resources:
 - ../common
 - ../../type/small
+  # site level addition
+- ../../functions/network/n01
 
 patchesStrategicMerge:
 - ./versions.yaml
+  # site level modification (patch)
+- ./functions/network/n02/function.yaml

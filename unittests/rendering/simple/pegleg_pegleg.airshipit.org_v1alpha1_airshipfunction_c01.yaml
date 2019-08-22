@@ -3,4 +3,4 @@ kind: AirshipFunction
 metadata:
   name: c01
   namespace: pegleg
-spec: c01 string spec
+spec: c01 type-level-override spec
