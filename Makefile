@@ -25,10 +25,12 @@ docs: clean build_docs
 .PHONY: build_docs
 build_docs:
 	tox -e docs
-#
-# GO111MODULE=on go get -u sigs.k8s.io/kind
-# GO111MODULE=on go get -u github.com/instrumenta/kubeval
-#
+
+.PHONY: install-tools
+install-tools:
+	cd /tmp && GO111MODULE=on go get sigs.k8s.io/kind@v0.5.0
+	cd /tmp && GO111MODULE=on go get github.com/instrumenta/kubeval@0.13.0
+
 clusterexist=$(shell kind get clusters | grep airshipyaml  | wc -l)
 ifeq ($(clusterexist), 1)
   testcluster=$(shell kind get kubeconfig-path --name="airshipyaml")
