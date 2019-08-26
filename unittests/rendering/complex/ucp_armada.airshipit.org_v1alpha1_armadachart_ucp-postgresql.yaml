@@ -51,7 +51,8 @@ spec:
             default: 5432
         scheme: postgresql+psycopg2
     images:
-      tags: postgres:9.5.19
+      tags:
+        postgres: postgres:9.5.19
     labels:
       server:
         node_selector_key: ucp-control-plane

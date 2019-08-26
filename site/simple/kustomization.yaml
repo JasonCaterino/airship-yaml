@@ -5,12 +5,18 @@ kind: Kustomization
 resources:
 - ../common
 - ../../type/small
-  # site level addition
+
+# site level addition
 - ../../functions/network/n01
+
+# site specific data
+- ./secrets/passphrases
+- ./software/config/common-software-config.yaml
 
 patchesStrategicMerge:
 - ./versions.yaml
-  # site level modification (patch)
+
+# site level modification (patch)
 - ./functions/network/n02/function.yaml
 
 images:

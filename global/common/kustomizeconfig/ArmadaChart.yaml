@@ -3,7 +3,7 @@ namePrefix:
   kind: ArmadaChart
 
 images:
-- path: spec/values/images/tags
+- path: spec/values/images/tags/postgres
   kind: ArmadaChart
 
 varReference:

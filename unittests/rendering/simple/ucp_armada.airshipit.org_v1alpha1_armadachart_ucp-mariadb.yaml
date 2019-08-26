@@ -29,7 +29,7 @@ spec:
       oslo_db:
         auth:
           admin:
-            password: $(DeckhandPassphrase.ucp-oslo-db-admin-password.spec)
+            password: airsloop123
             username: root
         host_fqdn_override:
           default: ""

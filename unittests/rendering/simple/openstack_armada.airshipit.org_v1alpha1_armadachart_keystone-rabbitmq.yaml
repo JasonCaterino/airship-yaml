@@ -30,7 +30,7 @@ spec:
       oslo_messaging:
         auth:
           user:
-            password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-admin-password.spec)
+            password: airsloop123
             username: keystone-rabbitmq-admin
         host_fqdn_override:
           default: ""

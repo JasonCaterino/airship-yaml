@@ -30,10 +30,10 @@ spec:
       oslo_db:
         auth:
           admin:
-            password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
+            password: airsloop123
             username: root
           exporter:
-            password: $(DeckhandPassphrase.osh-oslo-db-exporter-password.spec)
+            password: airsloop123
         host_fqdn_override:
           default: ""
         hosts:

@@ -116,7 +116,7 @@ spec:
       identity:
         auth:
           admin:
-            password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
+            password: airsloop123
             project_domain_name: default
             project_name: admin
             region_name: RegionOne
@@ -146,10 +146,10 @@ spec:
       oslo_db:
         auth:
           admin:
-            password: $(DeckhandPassphrase.ucp-oslo-db-admin-password.spec)
+            password: airsloop123
           keystone:
             database: keystone
-            password: $(DeckhandPassphrase.ucp-keystone-oslo-db-password.spec)
+            password: airsloop123
             username: keystone
         host_fqdn_override:
           default: ""
@@ -166,10 +166,10 @@ spec:
       oslo_messaging:
         auth:
           admin:
-            password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
+            password: airsloop123
             username: rabbitmq
           keystone:
-            password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
+            password: airsloop123
             username: keystone
         host_fqdn_override:
           default: ""

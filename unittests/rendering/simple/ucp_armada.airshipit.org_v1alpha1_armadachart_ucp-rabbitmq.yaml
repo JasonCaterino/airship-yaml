@@ -29,7 +29,7 @@ spec:
       oslo_messaging:
         auth:
           user:
-            password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
+            password: airsloop123
             username: rabbitmq
         host_fqdn_override:
           default: ""

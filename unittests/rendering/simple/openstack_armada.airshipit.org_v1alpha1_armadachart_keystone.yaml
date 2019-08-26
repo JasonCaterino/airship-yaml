@@ -141,10 +141,10 @@ spec:
       identity:
         auth:
           admin:
-            password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
+            password: airsloop123
             project_domain_name: default
             project_name: admin
-            region_name: $(PeglegCommonSoftwareConfig.common-software-config.spec.osh.region_name)
+            region_name: simple
             user_domain_name: default
             username: admin
         host_fqdn_override:
@@ -162,7 +162,7 @@ spec:
           internal: http
       oslo_cache:
         auth:
-          memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
+          memcache_secret_key: airsloop123
         host_fqdn_override:
           default: ""
         hosts:
@@ -174,10 +174,10 @@ spec:
       oslo_db:
         auth:
           admin:
-            password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
+            password: airsloop123
           keystone:
             database: keystone
-            password: $(DeckhandPassphrase.osh-keystone-oslo-db-password.spec)
+            password: airsloop123
             username: keystone
         host_fqdn_override:
           default: ""
@@ -194,10 +194,10 @@ spec:
       oslo_messaging:
         auth:
           admin:
-            password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-admin-password.spec)
+            password: airsloop123
             username: keystone-rabbitmq-admin
           keystone:
-            password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-password.spec)
+            password: airsloop123
             username: keystone-rabbitmq-user
         host_fqdn_override:
           default: ""

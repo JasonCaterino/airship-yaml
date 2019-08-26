@@ -38,7 +38,7 @@ spec:
       postgresql:
         auth:
           admin:
-            password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
+            password: airsloop123
             username: postgres
         host_fqdn_override:
           default: ""
@@ -51,7 +51,8 @@ spec:
             default: 5432
         scheme: postgresql+psycopg2
     images:
-      tags: postgres:9.6.15
+      tags:
+        postgres: postgres:9.6.15
     labels:
       server:
         node_selector_key: ucp-control-plane
