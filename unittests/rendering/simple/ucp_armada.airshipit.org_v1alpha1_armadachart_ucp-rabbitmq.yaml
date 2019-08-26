@@ -43,7 +43,7 @@ spec:
         scheme: rabbit
     images:
       tags:
-        rabbitmq: quay.io/airshipit/rabbitmq:FOOBAR
+        rabbitmq: rabbitmq:3.7.17
     labels:
       prometheus_rabbitmq_exporter:
         node_selector_key: ucp-control-plane

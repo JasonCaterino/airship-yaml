@@ -640,9 +640,9 @@ spec:
         maas_rack: quay.io/airshipit/maas-rack-controller:edf2c549ad7a1fbe2c0251bda0edf2f2d0772413
         maas_region: quay.io/airshipit/maas-region-controller:edf2c549ad7a1fbe2c0251bda0edf2f2d0772413
       mariadb:
-        mariadb: quay.io/airshipit/mariadb:FOOBAR
+        mariadb: mariadb:10.3.17
       memcached:
-        memcached: quay.io/airshipit/memcached:FOOBAR
+        memcached: memcached:1.5.16
       pegleg:
         pegleg: quay.io/airshipit/pegleg:fb2f62d25a11374435d99d9f59049d5799ccab73-ubuntu_xenial
       postgresql: {}
@@ -650,7 +650,7 @@ spec:
         monitoring_image: busybox:1.28.3
         promenade: quay.io/airshipit/promenade:fefd664cd8a5de659e197694b1cfa4d243ab4fae
       rabbitmq:
-        rabbitmq: quay.io/airshipit/rabbitmq:FOOBAR
+        rabbitmq: rabbitmq:3.7.17
       shipyard:
         airflow: quay.io/airshipit/airflow:89a8eda43e4af3cf146f89a25e96c37dbaa5fa88-ubuntu_xenial
         airflow_db_sync: quay.io/airshipit/airflow:89a8eda43e4af3cf146f89a25e96c37dbaa5fa88-ubuntu_xenial

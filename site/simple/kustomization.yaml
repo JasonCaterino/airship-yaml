@@ -12,3 +12,9 @@ patchesStrategicMerge:
 - ./versions.yaml
   # site level modification (patch)
 - ./functions/network/n02/function.yaml
+
+images:
+- name: postgres
+  newName: postgres
+  newTag: 9.6.15
+

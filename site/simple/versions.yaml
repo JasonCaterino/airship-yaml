@@ -8,8 +8,8 @@ spec:
   images:
     ucp:
       mariadb:
-        mariadb: quay.io/airshipit/mariadb:FOOBAR
+        mariadb: mariadb:10.3.17
       memcached:
-        memcached: quay.io/airshipit/memcached:FOOBAR
+        memcached: memcached:1.5.16
       rabbitmq:
-        rabbitmq: quay.io/airshipit/rabbitmq:FOOBAR
+        rabbitmq: rabbitmq:3.7.17

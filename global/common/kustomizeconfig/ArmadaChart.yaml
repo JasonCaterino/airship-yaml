@@ -2,6 +2,10 @@ namePrefix:
 - path: spec/release
   kind: ArmadaChart
 
+images:
+- path: spec/values/images/tags
+  kind: ArmadaChart
+
 varReference:
 # Bug in autovar feature with airsloop ?
 - kind: ArmadaChart

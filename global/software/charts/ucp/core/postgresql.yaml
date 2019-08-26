@@ -38,7 +38,8 @@ spec:
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
         parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
     images:
-      tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.postgresql)
+      # tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.postgresql)
+      tags: postgres:9.5.19
     labels:
       server:
         node_selector_key: ucp-control-plane
