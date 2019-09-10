@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: keystone-rabbitmq
   dependencies: []
-  install:
-    no_hooks: false
   release: keystone-rabbitmq
   source:
     location: https://opendev.org/openstack/openstack-helm-infra

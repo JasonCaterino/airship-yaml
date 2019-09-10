@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: ingress
   dependencies: []
-  install:
-    no_hooks: false
   release: ingress
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress)
   upgrade:

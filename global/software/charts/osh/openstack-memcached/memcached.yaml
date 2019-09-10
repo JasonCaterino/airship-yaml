@@ -10,8 +10,6 @@ metadata:
 spec:
   chart_name: openstack-memcached
   dependencies: []
-  install:
-    no_hooks: false
   release: openstack-memcached
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.memcached)
   upgrade:
@@ -34,3 +32,4 @@ spec:
     labels:
       release_group: airship-openstack-memcached
     timeout: 900
+  target_state: uninitialized

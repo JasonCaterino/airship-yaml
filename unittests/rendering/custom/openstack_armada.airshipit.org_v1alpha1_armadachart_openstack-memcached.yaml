@@ -9,14 +9,13 @@ metadata:
 spec:
   chart_name: openstack-memcached
   dependencies: []
-  install:
-    no_hooks: false
   release: openstack-memcached
   source:
     location: https://opendev.org/openstack/openstack-helm-infra
     reference: 0714b9d7ae08a88565d2c81c1b185fd77efaafca
     subpath: memcached
     type: git
+  target_state: uninitialized
   upgrade:
     no_hooks: false
     pre:

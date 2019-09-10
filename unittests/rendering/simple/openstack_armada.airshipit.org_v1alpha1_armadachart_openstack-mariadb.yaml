@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: openstack-mariadb
   dependencies: []
-  install:
-    no_hooks: false
   release: openstack-mariadb
   source:
     location: https://opendev.org/openstack/openstack-helm-infra

@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: ucp-rabbitmq
   dependencies: []
-  install:
-    no_hooks: false
   release: ucp-rabbitmq
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq)
   upgrade:

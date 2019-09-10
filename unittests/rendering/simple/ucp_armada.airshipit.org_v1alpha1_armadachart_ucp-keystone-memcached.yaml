@@ -8,8 +8,6 @@ metadata:
 spec:
   chart_name: ucp-keystone-memcached
   dependencies: []
-  install:
-    no_hooks: false
   release: ucp-keystone-memcached
   source:
     location: https://opendev.org/openstack/openstack-helm-infra

@@ -10,8 +10,6 @@ metadata:
 spec:
   chart_name: ucp-keystone
   dependencies: []
-  install:
-    no_hooks: false
   release: ucp-keystone
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.keystone)
   upgrade:

@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: keystone
   dependencies: []
-  install:
-    no_hooks: false
   release: keystone
   source:
     location: https://opendev.org/openstack/openstack-helm
@@ -162,7 +160,8 @@ spec:
           internal: http
       oslo_cache:
         auth:
-          memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
+          todojeb:
+            memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
         host_fqdn_override:
           default: ""
         hosts:

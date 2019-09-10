@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: ucp-postgresql
   dependencies: []
-  install:
-    no_hooks: false
   release: ucp-postgresql
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.postgresql)
   upgrade:

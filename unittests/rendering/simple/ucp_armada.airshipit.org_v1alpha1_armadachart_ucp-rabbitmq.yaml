@@ -8,8 +8,6 @@ metadata:
 spec:
   chart_name: ucp-rabbitmq
   dependencies: []
-  install:
-    no_hooks: false
   release: ucp-rabbitmq
   source:
     location: https://opendev.org/openstack/openstack-helm-infra

@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: ucp-mariadb
   dependencies: []
-  install:
-    no_hooks: false
   release: ucp-mariadb
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.mariadb)
   upgrade:

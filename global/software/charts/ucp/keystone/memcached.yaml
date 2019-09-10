@@ -9,8 +9,6 @@ metadata:
 spec:
   chart_name: ucp-keystone-memcached
   dependencies: []
-  install:
-    no_hooks: false
   release: ucp-keystone-memcached
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.memcached)
   upgrade:

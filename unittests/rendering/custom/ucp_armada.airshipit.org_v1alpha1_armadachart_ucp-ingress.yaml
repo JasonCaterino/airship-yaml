@@ -8,8 +8,6 @@ metadata:
 spec:
   chart_name: ingress
   dependencies: []
-  install:
-    no_hooks: false
   release: ingress
   source:
     location: https://opendev.org/openstack/openstack-helm-infra

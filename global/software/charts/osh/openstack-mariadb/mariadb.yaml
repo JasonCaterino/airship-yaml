@@ -10,8 +10,6 @@ metadata:
 spec:
   chart_name: openstack-mariadb
   dependencies: []
-  install:
-    no_hooks: false
   release: openstack-mariadb
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.mariadb)
   upgrade:

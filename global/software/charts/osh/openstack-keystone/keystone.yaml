@@ -10,8 +10,6 @@ metadata:
 spec:
   chart_name: keystone
   dependencies: []
-  install:
-    no_hooks: false
   release: keystone
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.keystone)
   upgrade:
@@ -127,7 +125,8 @@ spec:
         parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       oslo_cache:
         auth:
-          memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
+          todojeb:
+            memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
         parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:

@@ -10,8 +10,6 @@ metadata:
 spec:
   chart_name: keystone-rabbitmq
   dependencies: []
-  install:
-    no_hooks: false
   release: keystone-rabbitmq
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.rabbitmq)
   upgrade:
