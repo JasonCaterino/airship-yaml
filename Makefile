@@ -144,3 +144,25 @@ kubeval-strict:
 kubeval-remote:
 	kubeval actual/simple/ucp_armada.airshipit.org_v1alpha1_armadachart_ucp-shipyard.yaml --openshift --schema-location https://raw.githubusercontent.com/keleustes/armada-crd/master/kubeval 
 
+.PHONY: kubeval-simple
+kubeval-simple: rendering-test-simple
+	@for f in $(shell ls ./actual/simple/*armadachart*); do \
+		kubeval $${f} --schema-location file://$${HOME}/src/github.com/keleustes/armada-crd/kubeval --strict; \
+	done || true
+
+.PHONY: kubeval-custom
+kubeval-custom: rendering-test-custom
+	@for f in $(shell ls ./actual/custom/*armadachart*); do \
+		kubeval $${f} --schema-location file://$${HOME}/src/github.com/keleustes/armada-crd/kubeval --strict; \
+	done || true
+
+.PHONY: kubeval-complex
+kubeval-complex: rendering-test-complex
+	@for f in $(shell ls ./actual/complex/*armadachart*); do \
+		kubeval $${f} --schema-location file://$${HOME}/src/github.com/keleustes/armada-crd/kubeval --strict; \
+	done || true
+
+.PHONY: kubeval-checks
+kubeval-checks: kubeval-simple kubeval-custom kubeval-complex
+
+
