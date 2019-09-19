@@ -39,6 +39,9 @@ else
   SETKUBECONFIG=
 endif
 
+# KUSTOMIZEBIN=airshipctl kustomize
+KUSTOMIZEBIN=kustomize
+
 .PHONY: which-cluster
 which-cluster:
 	echo $(SETKUBECONFIG)
@@ -89,14 +92,14 @@ purge: purge-operators
 rendering-test-simple:
 	rm -fr actual/simple
 	mkdir -p actual/simple
-	kustomize build site/simple -o actual/simple
+	$(KUSTOMIZEBIN) build site/simple -o actual/simple
 	# cp actual/simple/* ./unittests/rendering/simple
 	diff -r actual/simple ./unittests/rendering/simple
 
 deploy-simple: install
 	rm -fr actual/simple
 	mkdir -p actual/simple
-	kustomize build site/simple -o actual/simple
+	$(KUSTOMIZEBIN) build site/simple -o actual/simple
 	$(SETKUBECONFIG) kubectl apply -f actual/simple
 
 purge-simple: 
@@ -105,14 +108,14 @@ purge-simple:
 rendering-test-complex:
 	rm -fr actual/complex
 	mkdir -p actual/complex
-	kustomize build site/complex -o actual/complex
+	$(KUSTOMIZEBIN) build site/complex -o actual/complex
 	# cp actual/complex/* ./unittests/rendering/complex
 	diff -r actual/complex ./unittests/rendering/complex
 
 deploy-complex: install
 	rm -fr actual/complex
 	mkdir -p actual/complex
-	kustomize build site/complex -o actual/complex
+	$(KUSTOMIZEBIN) build site/complex -o actual/complex
 	$(SETKUBECONFIG) kubectl apply -f actual/complex
 
 purge-complex: 
@@ -121,14 +124,14 @@ purge-complex:
 rendering-test-custom:
 	rm -fr actual/custom
 	mkdir -p actual/custom
-	kustomize build site/custom -o actual/custom
+	$(KUSTOMIZEBIN) build site/custom -o actual/custom
 	# cp actual/custom/* ./unittests/rendering/custom
 	diff -r actual/custom ./unittests/rendering/custom
 
 deploy-custom: install
 	rm -fr actual/custom
 	mkdir -p actual/custom
-	kustomize build site/custom -o actual/custom
+	$(KUSTOMIZEBIN) build site/custom -o actual/custom
 	$(SETKUBECONFIG) kubectl apply -f actual/custom
 
 purge-custom: 
