@@ -39,8 +39,8 @@ else
   SETKUBECONFIG=
 endif
 
-# KUSTOMIZEBIN=airshipctl kustomize
-KUSTOMIZEBIN=kustomize
+KUSTOMIZEBIN=airshipctl kustomize
+# KUSTOMIZEBIN=kustomize
 
 .PHONY: which-cluster
 which-cluster:
