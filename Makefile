@@ -39,8 +39,8 @@ else
   SETKUBECONFIG=
 endif
 
-KUSTOMIZEBIN=airshipctl kustomize
-# KUSTOMIZEBIN=kustomize
+# KUSTOMIZEBUILD=airshipctl kustomize build
+KUSTOMIZEBUILD=kustomize build
 
 .PHONY: which-cluster
 which-cluster:
@@ -63,43 +63,57 @@ install:
 	$(SETKUBECONFIG) kubectl label nodes --all ceph-mon=enabled --overwrite
 	$(SETKUBECONFIG) kubectl label nodes --all ceph-rgw=enabled --overwrite
 	$(SETKUBECONFIG) kubectl apply -f ./deploy/namespaces
-	$(SETKUBECONFIG) kubectl apply -f ./deploy/crds/
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/cabpk/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/capi/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/pegleg/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/shipyard/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/deckhand/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/promenade/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/drydock/crds | kubectl apply -f -
 	$(SETKUBECONFIG) kubectl apply -f ./deploy/cluster/cluster_role.yaml
 	$(SETKUBECONFIG) kubectl apply -f ./deploy/cluster/cluster_role_binding.yaml
 
 install-operators: install
-	$(SETKUBECONFIG) kubectl apply -n ceph -f ./deploy/operator
-	$(SETKUBECONFIG) kubectl apply -n nfs -f ./deploy/operator
-	$(SETKUBECONFIG) kubectl apply -n openstack -f ./deploy/operator
-	$(SETKUBECONFIG) kubectl apply -n osh-infra -f ./deploy/operator
-	$(SETKUBECONFIG) kubectl apply -n tenant-ceph -f ./deploy/operator
-	$(SETKUBECONFIG) kubectl apply -n ucp -f ./deploy/operator
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/ceph/ | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/nfs/ | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/openstack/ | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/osh-infra/ | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/tenant-ceph/ | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/ucp/ | kubectl apply -f -
 
 purge-operators:
-	$(SETKUBECONFIG) kubectl delete -n ceph -f ./deploy/operator --ignore-not-found=true
-	$(SETKUBECONFIG) kubectl delete -n nfs -f ./deploy/operator --ignore-not-found=true
-	$(SETKUBECONFIG) kubectl delete -n openstack -f ./deploy/operator --ignore-not-found=true
-	$(SETKUBECONFIG) kubectl delete -n osh-infra -f ./deploy/operator --ignore-not-found=true
-	$(SETKUBECONFIG) kubectl delete -n tenant-ceph -f ./deploy/operator --ignore-not-found=true
-	$(SETKUBECONFIG) kubectl delete -n ucp -f ./deploy/operator --ignore-not-found=true
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/ceph/ | kubectl delete --ignore-not-found=true -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/nfs/ | kubectl delete --ignore-not-found=true -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/openstack/ | kubectl delete --ignore-not-found=true -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/osh-infra/ | kubectl delete --ignore-not-found=true -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/tenant-ceph/ | kubectl delete --ignore-not-found=true -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/ucp/ | kubectl delete --ignore-not-found=true -f -
 
 purge: purge-operators
 	$(SETKUBECONFIG) kubectl delete -f ./deploy/cluster/cluster_role_binding.yaml --ignore-not-found=true
 	$(SETKUBECONFIG) kubectl delete -f ./deploy/cluster/cluster_role.yaml --ignore-not-found=true
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/cabpk/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/capi/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/pegleg/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/shipyard/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/deckhand/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/promenade/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/drydock/crds | kubectl delete -f -
 	$(SETKUBECONFIG) kubectl delete -f ./deploy/namespaces --ignore-not-found=true
-	$(SETKUBECONFIG) kubectl delete -f ./deploy/crds/ --ignore-not-found=true
 
 rendering-test-simple:
 	rm -fr actual/simple
 	mkdir -p actual/simple
-	$(KUSTOMIZEBIN) build site/simple -o actual/simple
+	$(KUSTOMIZEBUILD) site/simple -o actual/simple
 	# cp actual/simple/* ./unittests/rendering/simple
 	diff -r actual/simple ./unittests/rendering/simple
 
 deploy-simple: install
 	rm -fr actual/simple
 	mkdir -p actual/simple
-	$(KUSTOMIZEBIN) build site/simple -o actual/simple
+	$(KUSTOMIZEBUILD) site/simple -o actual/simple
 	$(SETKUBECONFIG) kubectl apply -f actual/simple
 
 purge-simple: 
@@ -108,14 +122,14 @@ purge-simple:
 rendering-test-complex:
 	rm -fr actual/complex
 	mkdir -p actual/complex
-	$(KUSTOMIZEBIN) build site/complex -o actual/complex
+	$(KUSTOMIZEBUILD) site/complex -o actual/complex
 	# cp actual/complex/* ./unittests/rendering/complex
 	diff -r actual/complex ./unittests/rendering/complex
 
 deploy-complex: install
 	rm -fr actual/complex
 	mkdir -p actual/complex
-	$(KUSTOMIZEBIN) build site/complex -o actual/complex
+	$(KUSTOMIZEBUILD) site/complex -o actual/complex
 	$(SETKUBECONFIG) kubectl apply -f actual/complex
 
 purge-complex: 
@@ -124,14 +138,14 @@ purge-complex:
 rendering-test-custom:
 	rm -fr actual/custom
 	mkdir -p actual/custom
-	$(KUSTOMIZEBIN) build site/custom -o actual/custom
+	$(KUSTOMIZEBUILD) site/custom -o actual/custom
 	# cp actual/custom/* ./unittests/rendering/custom
 	diff -r actual/custom ./unittests/rendering/custom
 
 deploy-custom: install
 	rm -fr actual/custom
 	mkdir -p actual/custom
-	$(KUSTOMIZEBIN) build site/custom -o actual/custom
+	$(KUSTOMIZEBUILD) site/custom -o actual/custom
 	$(SETKUBECONFIG) kubectl apply -f actual/custom
 
 purge-custom: 
