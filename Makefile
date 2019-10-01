@@ -71,6 +71,7 @@ install:
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/deckhand/crds | kubectl apply -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/promenade/crds | kubectl apply -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/drydock/crds | kubectl apply -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/airshipctl/crds | kubectl apply -f -
 	$(SETKUBECONFIG) kubectl apply -f ./deploy/cluster/cluster_role.yaml
 	$(SETKUBECONFIG) kubectl apply -f ./deploy/cluster/cluster_role_binding.yaml
 
@@ -101,6 +102,7 @@ purge: purge-operators
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/deckhand/crds | kubectl delete -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/promenade/crds | kubectl delete -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/drydock/crds | kubectl delete -f -
+	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/airshipctl/crds | kubectl delete -f -
 	$(SETKUBECONFIG) kubectl delete -f ./deploy/namespaces --ignore-not-found=true
 
 rendering-test-simple:
