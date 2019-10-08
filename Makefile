@@ -153,7 +153,15 @@ deploy-custom: install
 purge-custom: 
 	$(SETKUBECONFIG) kubectl delete -f actual/custom
 
-rendering-tests: rendering-test-simple rendering-test-complex rendering-test-custom
+rendering-test-metal3:
+	rm -fr actual/metal3
+	mkdir -p actual/metal3
+	# $(KUSTOMIZEBUILD) site/metal3 -o actual/metal3
+	site/metal3/generate.sh
+	# cp actual/metal3/* ./unittests/rendering/metal3
+	diff -r actual/metal3 ./unittests/rendering/metal3
+
+rendering-tests: rendering-test-simple rendering-test-complex rendering-test-custom rendering-test-metal3
 
 .PHONY: kubeval-strict
 kubeval-strict:

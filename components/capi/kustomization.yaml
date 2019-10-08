@@ -10,5 +10,8 @@ commonLabels:
 
 resources:
 - ./namespace.yaml
-- ./leader-election
+- ./crd
+- ./certmanager
 - ./manager
+- ./rbac
+- ./webhook
