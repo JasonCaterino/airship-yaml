@@ -111,7 +111,7 @@ EOF
 <!-- @build @test -->
 ```bash
 mkdir ${DEMO_HOME}/actual
-airshipctl kustomize build ${DEMO_HOME}/overlay -o ${DEMO_HOME}/actual
+airshipctl document build ${DEMO_HOME}/overlay -o ${DEMO_HOME}/actual
 ```
 
 ## Verification
