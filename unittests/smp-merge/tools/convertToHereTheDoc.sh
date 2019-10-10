@@ -1,9 +1,9 @@
 #!/bin/bash
-DEMONUMBER=openshift-api
+DEMONUMBER=airshipit-kfdef
 DEMONAME=${DEMONUMBER}
 NEWFILE=README.md
 APPDIR=recreate${DEMONUMBER}
-ALLINONEDIR=$HOME/src/sigs.k8s.io/kustomize/examples/crds/${DEMONAME}
+ALLINONEDIR=$HOME/kube-deployment/airship/airship-yaml/unittests/smp-merge/${DEMONAME}
 DEMODIR=$ALLINONEDIR
 KUSTFILES=`find $DEMODIR -name kustomization.yaml -print | sort`
 CONFIGFILES=`find $DEMODIR -name kustomizeconfig.yaml -print | sort`

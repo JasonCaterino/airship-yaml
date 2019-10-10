@@ -26,10 +26,40 @@ docs: clean build_docs
 build_docs:
 	tox -e docs
 
+# Directories.
+GOPATH              := ${GOPATH}
+BINDIR              := bin
+TOOLS_DIR           := tools
+TOOLS_BINDIR        := $(TOOLS_DIR)/bin
+
+# Binaries.
+KIND                := $(TOOLS_BINDIR)/kind
+KUBEVAL             := $(TOOLS_BINDIR)/kubeval
+KUBEBUILDER         := $(TOOLS_BINDIR)/kubebuilder
+AIRSHIPCTL          := $(TOOLS_BINDIR)/airshipctl
+
+## --------------------------------------
+## Tooling Binaries
+## --------------------------------------
+
+$(KIND): $(TOOLS_DIR)/go.mod # Build kind from tools folder.
+	cd $(TOOLS_DIR); go build -tags=tools -o $(BINDIR)/kind sigs.k8s.io/kind
+
+$(KUBEVAL): $(TOOLS_DIR)/go.mod # Build kubeval from tools folder.
+	cd $(TOOLS_DIR); go build -tags=tools -o $(BINDIR)/kubeval github.com/instrumenta/kubeval
+
+$(AIRSHIPCTL): $(TOOLS_DIR)/go.mod # Build kubeval from tools folder.
+	cd $(TOOLS_DIR); go build -tags=tools -o $(BINDIR)/airshipctl opendev.org/airship/airshipctl
+
+$(KUBEBUILDER): $(TOOLS_DIR)/go.mod
+	cd $(TOOLS_DIR); ./install_kubebuilder.sh
+
 .PHONY: install-tools
-install-tools:
-	cd /tmp && GO111MODULE=on go get sigs.k8s.io/kind@v0.5.0
-	cd /tmp && GO111MODULE=on go get github.com/instrumenta/kubeval@0.13.0
+install-tools: $(KIND) $(KUBEVAL) $(KUBEBUILDER) $(AIRSHIPCTL)
+
+## --------------------------------------
+## Testing
+## --------------------------------------
 
 clusterexist=$(shell kind get clusters | grep airshipyaml  | wc -l)
 ifeq ($(clusterexist), 1)
@@ -39,8 +69,7 @@ else
   SETKUBECONFIG=
 endif
 
-# KUSTOMIZEBUILD=airshipctl kustomize build
-KUSTOMIZEBUILD=kustomize build
+KUSTOMIZEBUILD=$(AIRSHIPCTL) document build
 
 .PHONY: which-cluster
 which-cluster:
@@ -48,11 +77,11 @@ which-cluster:
 
 .PHONY: create-testcluster
 create-testcluster:
-	kind create cluster --name airshipyaml
+	$(KIND) create cluster --name airshipyaml
 
 .PHONY: delete-testcluster
 delete-testcluster:
-	kind delete cluster --name airshipyaml
+	$(KIND) delete cluster --name airshipyaml
 
 # Merged from POC
 install:
@@ -161,32 +190,35 @@ rendering-test-metal3:
 	# cp actual/metal3/* ./unittests/rendering/metal3
 	diff -r actual/metal3 ./unittests/rendering/metal3
 
-rendering-tests: rendering-test-simple rendering-test-complex rendering-test-custom rendering-test-metal3
+smp-merge-tests:
+	cd unittests/smp-merge/ && ./crdRegisterTests.sh
+
+rendering-tests: install-tools rendering-test-simple rendering-test-complex rendering-test-custom rendering-test-metal3 smp-merge-tests
 
 .PHONY: kubeval-strict
 kubeval-strict:
-	kubeval actual/simple/ucp_armada.airshipit.org_v1alpha1_armadachart_ucp-shipyard.yaml --openshift --schema-location file:///$(HOME)/src/github.com/keleustes/armada-crd/kubeval --strict
+	$(KUBEVAL) actual/simple/ucp_armada.airshipit.org_v1alpha1_armadachart_ucp-shipyard.yaml --openshift --schema-location file:///$(HOME)/src/github.com/keleustes/armada-crd/kubeval --strict
 
 .PHONY: kubeval-remote
 kubeval-remote:
-	kubeval actual/simple/ucp_armada.airshipit.org_v1alpha1_armadachart_ucp-shipyard.yaml --openshift --schema-location https://raw.githubusercontent.com/keleustes/armada-crd/master/kubeval 
+	$(KUBEVAL) actual/simple/ucp_armada.airshipit.org_v1alpha1_armadachart_ucp-shipyard.yaml --openshift --schema-location https://raw.githubusercontent.com/keleustes/armada-crd/master/kubeval 
 
 .PHONY: kubeval-simple
 kubeval-simple: rendering-test-simple
 	@for f in $(shell ls ./actual/simple/*armadachart*); do \
-		kubeval $${f} --schema-location file://$${HOME}/src/github.com/keleustes/armada-crd/kubeval --strict; \
+		$(KUBEVAL) $${f} --schema-location file://$${GOPATH}/src/github.com/keleustes/armada-crd/kubeval --strict; \
 	done || true
 
 .PHONY: kubeval-custom
 kubeval-custom: rendering-test-custom
 	@for f in $(shell ls ./actual/custom/*armadachart*); do \
-		kubeval $${f} --schema-location file://$${HOME}/src/github.com/keleustes/armada-crd/kubeval --strict; \
+		$(KUBEVAL) $${f} --schema-location file://$${GOPATH}/src/github.com/keleustes/armada-crd/kubeval --strict; \
 	done || true
 
 .PHONY: kubeval-complex
 kubeval-complex: rendering-test-complex
 	@for f in $(shell ls ./actual/complex/*armadachart*); do \
-		kubeval $${f} --schema-location file://$${HOME}/src/github.com/keleustes/armada-crd/kubeval --strict; \
+		$(KUBEVAL) $${f} --schema-location file://$${GOPATH}/src/github.com/keleustes/armada-crd/kubeval --strict; \
 	done || true
 
 .PHONY: kubeval-checks

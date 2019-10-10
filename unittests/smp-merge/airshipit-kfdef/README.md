@@ -1,7 +1,7 @@
-# Test CRD Register kubeflow-kfdef
+# Test CRD Register airshipit-kfdef
 
 
-This folder the kubeflow-kfdef Kustomize CRD Register
+This folder the airshipit-kfdef Kustomize CRD Register
 
 ## Setup the workspace
 
@@ -57,7 +57,7 @@ cat <<'EOF' >${DEMO_HOME}/base/resources.yaml
 # This is the config to install Kubeflow on an existing k8s cluster.
 # If the cluster already has istio, comment out the istio install part below.
 
-apiVersion: kfdef.apps.kubeflow.org/v1beta1
+apiVersion: kubeflow.airshipit.org/v1beta1
 kind: KfDef
 metadata:
   name: k8s-istio
@@ -336,7 +336,7 @@ EOF
 <!-- @createResource1 @test -->
 ```bash
 cat <<'EOF' >${DEMO_HOME}/base/transformer.yaml
-apiVersion: kfdef.kubeflow.org/v1beta1
+apiVersion: kubeflow.airshipit.org/v1beta1
 kind: KfDefCRDRegister
 metadata:
   name: kfdefcrdregister
@@ -349,7 +349,7 @@ EOF
 <!-- @createResource2 @test -->
 ```bash
 cat <<'EOF' >${DEMO_HOME}/overlay/patch.yaml
-apiVersion: kfdef.apps.kubeflow.org/v1beta1
+apiVersion: kubeflow.airshipit.org/v1beta1
 kind: KfDef
 metadata:
   name: k8s-istio
@@ -399,8 +399,8 @@ mkdir ${DEMO_HOME}/expected
 
 <!-- @createExpected0 @test -->
 ```bash
-cat <<'EOF' >${DEMO_HOME}/expected/kfdef.apps.kubeflow.org_v1beta1_kfdef_k8s-istio.yaml
-apiVersion: kfdef.apps.kubeflow.org/v1beta1
+cat <<'EOF' >${DEMO_HOME}/expected/kubeflow.airshipit.org_v1beta1_kfdef_k8s-istio.yaml
+apiVersion: kubeflow.airshipit.org/v1beta1
 kind: KfDef
 metadata:
   name: k8s-istio

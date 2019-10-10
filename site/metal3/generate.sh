@@ -55,34 +55,34 @@ export SOME_CREDENTIALS="SOME_CREDENTIALS"
 export BAREMETAL_B64ENCODED_CREDENTIAL="$(echo -n "$SOME_CREDENTIALS" | base64 | tr -d '\n')"
 
 # Generate cluster resources.
-kustomize build "${SOURCE_DIR}/cluster" | envsubst > "${CLUSTER_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/cluster" | envsubst > "${CLUSTER_GENERATED_FILE}"
 echo "Generated ${CLUSTER_GENERATED_FILE}"
 
 # Generate controlplane resources.
-kustomize build "${SOURCE_DIR}/controlplane" | envsubst > "${CONTROLPLANE_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/controlplane" | envsubst > "${CONTROLPLANE_GENERATED_FILE}"
 echo "Generated ${CONTROLPLANE_GENERATED_FILE}"
 
 # Generate metal3place resources.
-kustomize build "${SOURCE_DIR}/metal3plane" | envsubst > "${METAL3PLANE_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/metal3plane" | envsubst > "${METAL3PLANE_GENERATED_FILE}"
 echo "Generated ${METAL3PLANE_GENERATED_FILE}"
 
 # Generate machinedeployment resources.
-kustomize build "${SOURCE_DIR}/machinedeployment" | envsubst >> "${MACHINEDEPLOYMENT_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/machinedeployment" | envsubst >> "${MACHINEDEPLOYMENT_GENERATED_FILE}"
 echo "Generated ${MACHINEDEPLOYMENT_GENERATED_FILE}"
 
 # Generate Cluster API provider components file.
-kustomize build "${SOURCE_DIR}/../../components/capi/default" > "${COMPONENTS_CLUSTER_API_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/../../components/capi/default" > "${COMPONENTS_CLUSTER_API_GENERATED_FILE}"
 echo "Generated ${COMPONENTS_CLUSTER_API_GENERATED_FILE}"
 
 # Generate Kubeadm Bootstrap Provider components file.
-kustomize build "${SOURCE_DIR}/../../components/cabpk/default" > "${COMPONENTS_KUBEADM_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/../../components/cabpk/default" > "${COMPONENTS_KUBEADM_GENERATED_FILE}"
 echo "Generated ${COMPONENTS_KUBEADM_GENERATED_FILE}"
 
 # Generate BAREMETAL Infrastructure Provider components file.
-kustomize build "${SOURCE_DIR}/../../components/capbm/default" | envsubst > "${COMPONENTS_BAREMETAL_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/../../components/capbm/default" | envsubst > "${COMPONENTS_BAREMETAL_GENERATED_FILE}"
 echo "Generated ${COMPONENTS_BAREMETAL_GENERATED_FILE}"
 
 # Generate a single provider components file.
-kustomize build "${SOURCE_DIR}/provider-components" | envsubst > "${PROVIDER_COMPONENTS_GENERATED_FILE}"
+airshipctl document build "${SOURCE_DIR}/provider-components" | envsubst > "${PROVIDER_COMPONENTS_GENERATED_FILE}"
 echo "Generated ${PROVIDER_COMPONENTS_GENERATED_FILE}"
 echo "WARNING: ${PROVIDER_COMPONENTS_GENERATED_FILE} includes BAREMETAL credentials"

@@ -1,7 +1,7 @@
 # This is the config to install Kubeflow on an existing k8s cluster.
 # If the cluster already has istio, comment out the istio install part below.
 
-apiVersion: kfdef.apps.kubeflow.org/v1beta1
+apiVersion: kubeflow.airshipit.org/v1beta1
 kind: KfDef
 metadata:
   name: k8s-istio

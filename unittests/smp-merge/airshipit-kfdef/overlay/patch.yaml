@@ -1,4 +1,4 @@
-apiVersion: kfdef.apps.kubeflow.org/v1beta1
+apiVersion: kubeflow.airshipit.org/v1beta1
 kind: KfDef
 metadata:
   name: k8s-istio
