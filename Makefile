@@ -37,6 +37,7 @@ KIND                := $(TOOLS_BINDIR)/kind
 KUBEVAL             := $(TOOLS_BINDIR)/kubeval
 KUBEBUILDER         := $(TOOLS_BINDIR)/kubebuilder
 AIRSHIPCTL          := $(TOOLS_BINDIR)/airshipctl
+MDRIP               := $(TOOLS_BIN_DIR)/mdrip
 
 ## --------------------------------------
 ## Tooling Binaries
@@ -54,8 +55,11 @@ $(AIRSHIPCTL): $(TOOLS_DIR)/go.mod # Build kubeval from tools folder.
 $(KUBEBUILDER): $(TOOLS_DIR)/go.mod
 	cd $(TOOLS_DIR); ./install_kubebuilder.sh
 
+$(MDRIP): $(TOOLS_DIR)/go.mod # Build mdrip from tools folder.
+	# cd $(TOOLS_DIR); go build -o ./bin/mdrip github.com/monopole/mdrip
+
 .PHONY: install-tools
-install-tools: $(KIND) $(KUBEVAL) $(KUBEBUILDER) $(AIRSHIPCTL)
+install-tools: $(KIND) $(KUBEVAL) $(MDRIP) $(AIRSHIPCTL)
 
 ## --------------------------------------
 ## Testing

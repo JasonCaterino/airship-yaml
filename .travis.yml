@@ -1,0 +1,18 @@
+language: go
+
+go:
+  - "1.13"
+
+env:
+- GO111MODULE=on
+
+before_install:
+- make install-tools
+
+script: KUBEBUILDER_ASSETS="$(pwd)/tools/bin/" PATH="$(pwd)/tools/bin/:$PATH" make rendering-tests
+
+git:
+  depth: 1
+
+notifications:
+  email: false
