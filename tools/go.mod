@@ -17,7 +17,7 @@ replace (
 
 	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.4.1
 
-	github.com/argoproj/argo => github.com/keleustes/argo v1.16.0
+	github.com/argoproj/argo => github.com/keleustes/argo v1.16.4
 	github.com/colinmarc/hdfs => github.com/colinmarc/hdfs v0.0.0-20180802165501-48eb8d6c34a9
 	github.com/ghodss/yaml => github.com/ghodss/yaml v0.0.0-20180820084758-c7ce16629ff4
 
@@ -33,7 +33,7 @@ replace (
 	k8s.io/component-base => k8s.io/component-base v0.0.0-20191003000551-f573d376509c
 	k8s.io/cri-api => k8s.io/cri-api v0.0.0-20190828162817-608eb1dad4ac
 	k8s.io/csi-translation-lib => k8s.io/csi-translation-lib v0.0.0-20191003003551-0eecdcdcc049
-	k8s.io/helm => github.com/keleustes/helm v1.16.1
+	k8s.io/helm => github.com/keleustes/helm v1.16.4
 	k8s.io/kube-aggregator => k8s.io/kube-aggregator v0.0.0-20191003001317-a019a9d85a86
 	k8s.io/kube-controller-manager => k8s.io/kube-controller-manager v0.0.0-20191003003129-09316795c0dd
 	k8s.io/kube-proxy => k8s.io/kube-proxy v0.0.0-20191003002707-f6b7b0f55cc0
@@ -44,13 +44,14 @@ replace (
 	k8s.io/metrics => k8s.io/metrics v0.0.0-20191003002233-837aead57baf
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.0.0-20191003001538-80f33ca02582
 
-	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.2
+	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.4
 
-	sigs.k8s.io/cluster-api v0.2.2 => github.com/keleustes/cluster-api v1.16.1
-	sigs.k8s.io/cluster-api-bootstrap-provider-kubeadm => github.com/keleustes/cluster-api-bootstrap-provider-kubeadm v1.16.1
-	sigs.k8s.io/cluster-api-provider-baremetal => github.com/keleustes/cluster-api-provider-baremetal v1.16.2
-	sigs.k8s.io/cluster-api-provider-openstack => github.com/keleustes/cluster-api-provider-openstack v1.16.1
-	sigs.k8s.io/controller-runtime v0.2.2 => github.com/keleustes/controller-runtime v1.16.1
+	sigs.k8s.io/cluster-api => github.com/keleustes/cluster-api v1.16.2
+	sigs.k8s.io/cluster-api-bootstrap-provider-kubeadm => github.com/keleustes/cluster-api-bootstrap-provider-kubeadm v1.16.2
+	sigs.k8s.io/cluster-api-provider-aws => github.com/keleustes/cluster-api-provider-aws v1.16.4
+	sigs.k8s.io/cluster-api-provider-baremetal => github.com/keleustes/cluster-api-provider-baremetal v1.16.4
+	sigs.k8s.io/cluster-api-provider-openstack => github.com/keleustes/cluster-api-provider-openstack v1.16.4
+	sigs.k8s.io/controller-runtime => github.com/keleustes/controller-runtime v1.16.2
 	sigs.k8s.io/kind => github.com/keleustes/kind v1.16.2
-	sigs.k8s.io/kustomize/v3 => github.com/keleustes/kustomize/v3 v3.16.4
+	sigs.k8s.io/kustomize/v3 => github.com/keleustes/kustomize/v3 v3.16.8
 )
