@@ -55,22 +55,6 @@ spec:
           type: object
         spec:
           description: BareMetalClusterSpec defines the desired state of BareMetalCluster.
-          properties:
-            cloudName:
-              description: The name of the cloud to use from the clouds secret
-              type: string
-            cloudsSecret:
-              description: The name of the secret containing the openstack credentials
-              properties:
-                name:
-                  description: Name is unique within a namespace to reference a secret
-                    resource.
-                  type: string
-                namespace:
-                  description: Namespace defines the space within which the secret
-                    name must be unique.
-                  type: string
-              type: object
           type: object
         status:
           description: BareMetalClusterStatus defines the observed state of BareMetalCluster.
@@ -94,7 +78,9 @@ spec:
               type: array
             ready:
               description: Ready denotes that the baremetal cluster (infrastructure)
-                is ready.
+                is ready. In Baremetal case, it does not mean anything for now as
+                no infrastructure steps need to be performed. Required by Cluster
+                API. Set to True by the BaremetalCluster controller after creation.
               type: boolean
           required:
           - ready
@@ -693,8 +679,8 @@ spec:
               - url
               type: object
             providerID:
-              description: ProviderID will be the container name in ProviderID format
-                (baremetal:////<containername>)
+              description: ProviderID will be the baremetal machine in ProviderID
+                format (baremetal:////<machinename>)
               type: string
             userData:
               description: UserData references the Secret that holds user data needed
@@ -816,7 +802,9 @@ spec:
                 E.g. Pending, Running, Terminating, Failed etc.
               type: string
             ready:
-              description: Ready is the state of the metal3.
+              description: 'Ready is the state of the metal3. TODO : Document the
+                variable : mhrivnak: " it would be good to document what this means,
+                how to interpret it, under what circumstances the value changes, etc."'
               type: boolean
             version:
               description: Version specifies the current version of Kubernetes running
@@ -930,8 +918,8 @@ spec:
                       - url
                       type: object
                     providerID:
-                      description: ProviderID will be the container name in ProviderID
-                        format (baremetal:////<containername>)
+                      description: ProviderID will be the baremetal machine in ProviderID
+                        format (baremetal:////<machinename>)
                       type: string
                     userData:
                       description: UserData references the Secret that holds user

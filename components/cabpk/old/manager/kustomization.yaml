@@ -1,8 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-resources:
-- ./role.yaml
-- ./rolebinding.yaml
-- ./controller-manager-metrics-service.yaml
-- ./controller-manager.yaml

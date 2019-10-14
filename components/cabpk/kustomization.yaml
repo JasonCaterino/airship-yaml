@@ -3,13 +3,15 @@ kind: Kustomization
 
 namespace: cabpk-system
 
-namePrefix: cabpk-
+namePrefix: cpbpk-
 
 commonLabels:
    control-plane: cabpk-controller-manager
 
 resources:
 - ./namespace.yaml
-- ./leader-election
-- ./proxy
+- ./crd
+- ./certmanager
 - ./manager
+- ./rbac
+- ./webhook
