@@ -95,7 +95,7 @@ install:
 	$(SETKUBECONFIG) kubectl label nodes --all ceph-mgr=enabled --overwrite
 	$(SETKUBECONFIG) kubectl label nodes --all ceph-mon=enabled --overwrite
 	$(SETKUBECONFIG) kubectl label nodes --all ceph-rgw=enabled --overwrite
-	$(SETKUBECONFIG) kubectl apply -f ./deploy/namespaces
+	$(SETKUBECONFIG) kubectl apply -k ./deploy/namespaces
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/cabpk/crds | kubectl apply -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/capi/crds | kubectl apply -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/pegleg/crds | kubectl apply -f -
@@ -105,8 +105,7 @@ install:
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/promenade/crds | kubectl apply -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/drydock/crds | kubectl apply -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/airshipctl/crds | kubectl apply -f -
-	$(SETKUBECONFIG) kubectl apply -f ./deploy/cluster/cluster_role.yaml
-	$(SETKUBECONFIG) kubectl apply -f ./deploy/cluster/cluster_role_binding.yaml
+	$(SETKUBECONFIG) kubectl apply -k ./deploy/cluster
 
 install-operators: install
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/ceph/ | kubectl apply -f -
@@ -125,8 +124,7 @@ purge-operators:
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/armada/overlays/ucp/ | kubectl delete --ignore-not-found=true -f -
 
 purge: purge-operators
-	$(SETKUBECONFIG) kubectl delete -f ./deploy/cluster/cluster_role_binding.yaml --ignore-not-found=true
-	$(SETKUBECONFIG) kubectl delete -f ./deploy/cluster/cluster_role.yaml --ignore-not-found=true
+	$(SETKUBECONFIG) kubectl delete -k ./deploy/cluster
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/cabpk/crds | kubectl delete -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/capi/crds | kubectl delete -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/pegleg/crds | kubectl delete -f -
@@ -136,7 +134,7 @@ purge: purge-operators
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/promenade/crds | kubectl delete -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/drydock/crds | kubectl delete -f -
 	$(SETKUBECONFIG) $(KUSTOMIZEBUILD) ./components/airshipctl/crds | kubectl delete -f -
-	$(SETKUBECONFIG) kubectl delete -f ./deploy/namespaces --ignore-not-found=true
+	$(SETKUBECONFIG) kubectl delete -k ./deploy/namespaces --ignore-not-found=true
 
 rendering-test-simple:
 	rm -fr actual/simple
