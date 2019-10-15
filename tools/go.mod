@@ -44,7 +44,7 @@ replace (
 	k8s.io/metrics => k8s.io/metrics v0.0.0-20191003002233-837aead57baf
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.0.0-20191003001538-80f33ca02582
 
-	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.4
+	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.13
 
 	sigs.k8s.io/cluster-api => github.com/keleustes/cluster-api v1.16.2
 	sigs.k8s.io/cluster-api-bootstrap-provider-kubeadm => github.com/keleustes/cluster-api-bootstrap-provider-kubeadm v1.16.2
@@ -52,6 +52,6 @@ replace (
 	sigs.k8s.io/cluster-api-provider-baremetal => github.com/keleustes/cluster-api-provider-baremetal v1.16.4
 	sigs.k8s.io/cluster-api-provider-openstack => github.com/keleustes/cluster-api-provider-openstack v1.16.4
 	sigs.k8s.io/controller-runtime => github.com/keleustes/controller-runtime v1.16.2
-	sigs.k8s.io/kind => github.com/keleustes/kind v1.16.2
-	sigs.k8s.io/kustomize/v3 => github.com/keleustes/kustomize/v3 v3.16.8
+	sigs.k8s.io/kind => github.com/keleustes/kind v1.16.10
+	sigs.k8s.io/kustomize/v3 => github.com/keleustes/kustomize/v3 v3.16.10
 )
