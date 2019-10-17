@@ -42,7 +42,8 @@ configurations:
 
 configMapGenerator:
 - name: istio-parameters
-  env: params.env
+  envs:
+  - params.env
 
 vars:
 - name: clusterRbacConfig
