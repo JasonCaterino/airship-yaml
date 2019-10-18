@@ -10,20 +10,24 @@
 #   path: spec/bootstrap/configRef/namespace
 #   create: true
 
-commonLabels:
-- path: metadata/labels
-  create: true
+# commonLabels:
+# - path: metadata/labels
+#   create: true
+#
 
 nameReference:
-- kind: KubeadmConfig
+- kind: KubeadmConfigTemplate
   fieldSpecs:
-  - kind: Machine
+  - kind: MachineDeployment
     group: cluster.x-k8s.io
-    version: v1alpha3
-    path: spec/bootstrap/configRef
-- kind: BareMetalMachine
+    path: spec/template/spec/bootstrap/configRef
+- kind: BareMetalMachineTemplate
   fieldSpecs:
-  - kind: Machine
+  - kind: MachineDeployment
     group: cluster.x-k8s.io
-    version: v1alpha3
-    path: spec/infrastructureRef
+    path: spec/template/spec/infrastructureRef
+
+replicas:
+- path: spec/replicas
+  create: true
+  kind: MachineDeployment

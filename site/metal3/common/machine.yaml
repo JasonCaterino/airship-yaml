@@ -10,9 +10,9 @@
 #   path: spec/bootstrap/configRef/namespace
 #   create: true
 
-commonLabels:
-- path: metadata/labels
-  create: true
+# commonLabels:
+# - path: metadata/labels
+#   create: true
 
 nameReference:
 - kind: KubeadmConfig

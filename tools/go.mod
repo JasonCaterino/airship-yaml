@@ -44,13 +44,13 @@ replace (
 	k8s.io/metrics => k8s.io/metrics v0.0.0-20191016113814-3b1a734dba6e
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.0.0-20191016112829-06bb3c9d77c9
 
-	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.20
+	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.24
 
-	sigs.k8s.io/cluster-api => github.com/keleustes/cluster-api v1.16.20
-	sigs.k8s.io/cluster-api-provider-aws => github.com/keleustes/cluster-api-provider-aws v1.16.20
-	sigs.k8s.io/cluster-api-provider-baremetal => github.com/keleustes/cluster-api-provider-baremetal v1.16.20
-	sigs.k8s.io/cluster-api-provider-openstack => github.com/keleustes/cluster-api-provider-openstack v1.16.20
+	sigs.k8s.io/cluster-api => github.com/keleustes/cluster-api v1.16.24
+	sigs.k8s.io/cluster-api-provider-aws => github.com/keleustes/cluster-api-provider-aws v1.16.24
+	sigs.k8s.io/cluster-api-provider-baremetal => github.com/keleustes/cluster-api-provider-baremetal v1.16.24
+	sigs.k8s.io/cluster-api-provider-openstack => github.com/keleustes/cluster-api-provider-openstack v1.16.24
 	sigs.k8s.io/controller-runtime => github.com/keleustes/controller-runtime v1.16.20
-	sigs.k8s.io/kind => github.com/keleustes/kind v1.16.20
-	sigs.k8s.io/kustomize/v3 => github.com/keleustes/kustomize/v3 v3.16.21
+	sigs.k8s.io/kind => github.com/keleustes/kind v1.16.24
+	sigs.k8s.io/kustomize/v3 => github.com/keleustes/kustomize/v3 v3.16.26
 )

@@ -43,7 +43,7 @@ spec:
         cloud-provider: baremetal
       name: '{{ ds.meta_data.hostname }}'
 ---
-apiVersion: cluster.x-k8s.io/v1alpha2
+apiVersion: cluster.x-k8s.io/v1alpha3
 kind: Machine
 metadata:
   labels:
@@ -58,14 +58,15 @@ spec:
       kind: KubeadmConfig
       name: test1-controlplane-0
       namespace: default
+  clusterName: test1
   infrastructureRef:
-    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: BareMetalMachine
     name: test1-controlplane-0
     namespace: default
-  version: v1.16.0
+  version: v1.16.2
 ---
-apiVersion: cluster.x-k8s.io/v1alpha2
+apiVersion: cluster.x-k8s.io/v1alpha3
 kind: Machine
 metadata:
   labels:
@@ -80,14 +81,15 @@ spec:
       kind: KubeadmConfig
       name: test1-controlplane-1
       namespace: default
+  clusterName: test1
   infrastructureRef:
-    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: BareMetalMachine
     name: test1-controlplane-1
     namespace: default
-  version: v1.16.0
+  version: v1.16.2
 ---
-apiVersion: cluster.x-k8s.io/v1alpha2
+apiVersion: cluster.x-k8s.io/v1alpha3
 kind: Machine
 metadata:
   labels:
@@ -102,63 +104,40 @@ spec:
       kind: KubeadmConfig
       name: test1-controlplane-2
       namespace: default
+  clusterName: test1
   infrastructureRef:
-    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: BareMetalMachine
     name: test1-controlplane-2
     namespace: default
-  version: v1.16.0
+  version: v1.16.2
 ---
-apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: BareMetalMachine
 metadata:
   name: test1-controlplane-0
   namespace: default
 spec:
-  bmc:
-    address: libvirt://192.168.122.10:6233/
-    credentialsName: worker-0-bmc-secret
-  bootMACAddress: 00:1a:74:74:e5:cb
   image:
     checksum: 97830b21ed272a3d854615beb54cf004
     url: http://172.22.0.1/images/rhcos-ootpa-latest.qcow2
-  online: true
-  userData:
-    name: worker-user-data
-    namespace: openshift-machine-api
 ---
-apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: BareMetalMachine
 metadata:
   name: test1-controlplane-1
   namespace: default
 spec:
-  bmc:
-    address: libvirt://192.168.122.11:6233/
-    credentialsName: worker-0-bmc-secret
-  bootMACAddress: 00:1a:74:74:e5:cb
   image:
     checksum: 97830b21ed272a3d854615beb54cf004
     url: http://172.22.0.1/images/rhcos-ootpa-latest.qcow2
-  online: true
-  userData:
-    name: worker-user-data
-    namespace: openshift-machine-api
 ---
-apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: BareMetalMachine
 metadata:
   name: test1-controlplane-2
   namespace: default
 spec:
-  bmc:
-    address: libvirt://192.168.122.12:6233/
-    credentialsName: worker-0-bmc-secret
-  bootMACAddress: 00:1a:74:74:e5:cb
   image:
     checksum: 97830b21ed272a3d854615beb54cf004
     url: http://172.22.0.1/images/rhcos-ootpa-latest.qcow2
-  online: true
-  userData:
-    name: worker-user-data
-    namespace: openshift-machine-api

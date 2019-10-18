@@ -1,0 +1,8 @@
+resources:
+- ./global.yaml
+- ./cluster
+- ./controlplane
+- ./metal3plane
+- ./machinedeployment
+- ./provider-components
+

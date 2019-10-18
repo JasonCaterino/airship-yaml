@@ -26,7 +26,7 @@ command -v "${ENVSUBST}" >/dev/null 2>&1 || echo -v "Cannot find ${ENVSUBST} in 
 
 # Cluster.
 export CLUSTER_NAME="${CLUSTER_NAME:-test1}"
-export KUBERNETES_VERSION="${KUBERNETES_VERSION:-v1.16.0}"
+export KUBERNETES_VERSION="${KUBERNETES_VERSION:-v1.16.2}"
 
 # Machine settings.
 export CONTROL_PLANE_MACHINE_TYPE="${CONTROL_PLANE_MACHINE_TYPE:-t2.medium}"
@@ -71,12 +71,8 @@ tools/bin/airshipctl document build "${SOURCE_DIR}/machinedeployment" | envsubst
 echo "Generated ${MACHINEDEPLOYMENT_GENERATED_FILE}"
 
 # Generate Cluster API provider components file.
-tools/bin/airshipctl document build "${SOURCE_DIR}/../../components/capi/default" > "${COMPONENTS_CLUSTER_API_GENERATED_FILE}"
+tools/bin/airshipctl document build "${SOURCE_DIR}/../../components/capi/default" | envsubst > "${COMPONENTS_CLUSTER_API_GENERATED_FILE}"
 echo "Generated ${COMPONENTS_CLUSTER_API_GENERATED_FILE}"
-
-# Generate Kubeadm Bootstrap Provider components file.
-tools/bin/airshipctl document build "${SOURCE_DIR}/../../components/cabpk/default" > "${COMPONENTS_KUBEADM_GENERATED_FILE}"
-echo "Generated ${COMPONENTS_KUBEADM_GENERATED_FILE}"
 
 # Generate BAREMETAL Infrastructure Provider components file.
 tools/bin/airshipctl document build "${SOURCE_DIR}/../../components/capbm/default" | envsubst > "${COMPONENTS_BAREMETAL_GENERATED_FILE}"
@@ -85,4 +81,3 @@ echo "Generated ${COMPONENTS_BAREMETAL_GENERATED_FILE}"
 # Generate a single provider components file.
 tools/bin/airshipctl document build "${SOURCE_DIR}/provider-components" | envsubst > "${PROVIDER_COMPONENTS_GENERATED_FILE}"
 echo "Generated ${PROVIDER_COMPONENTS_GENERATED_FILE}"
-echo "WARNING: ${PROVIDER_COMPONENTS_GENERATED_FILE} includes BAREMETAL credentials"
