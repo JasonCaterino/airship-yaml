@@ -320,6 +320,8 @@ github.com/go-openapi/spec v0.19.0/go.mod h1:XkF/MOi14NmjsfZ8VtAKf8pIlbZzyoTvZsd
 github.com/go-openapi/spec v0.19.2/go.mod h1:sCxk3jxKgioEJikev4fgkNmwS+3kuYdJtcsZsD5zxMY=
 github.com/go-openapi/spec v0.19.3 h1:0XRyw8kguri6Yw4SxhsQA/atC88yqrk0+G4YhI2wabc=
 github.com/go-openapi/spec v0.19.3/go.mod h1:FpwSN1ksY1eteniUU7X0N/BgJ7a4WvBFVA8Lj9mJglo=
+github.com/go-openapi/spec v0.19.4 h1:ixzUSnHTd6hCemgtAJgluaTSGYpLNpJY4mA2DIkdOAo=
+github.com/go-openapi/spec v0.19.4/go.mod h1:FpwSN1ksY1eteniUU7X0N/BgJ7a4WvBFVA8Lj9mJglo=
 github.com/go-openapi/strfmt v0.17.0/go.mod h1:P82hnJI0CXkErkXi8IKjPbNBM6lV6+5pLP5l494TcyU=
 github.com/go-openapi/strfmt v0.17.2/go.mod h1:P82hnJI0CXkErkXi8IKjPbNBM6lV6+5pLP5l494TcyU=
 github.com/go-openapi/strfmt v0.18.0/go.mod h1:P82hnJI0CXkErkXi8IKjPbNBM6lV6+5pLP5l494TcyU=
@@ -554,8 +556,8 @@ github.com/juju/testing v0.0.0-20190429233213-dfc56b8c09fc/go.mod h1:63prj8cnj0t
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
 github.com/karrick/godirwalk v1.7.5/go.mod h1:2c9FRhkDxdIbgkOnCEvnSWs71Bhugbl46shStcFDJ34=
 github.com/karrick/godirwalk v1.10.12/go.mod h1:RoGL9dQei4vP9ilrpETWE8CLOZ1kiN0LhBygSwrAsHA=
-github.com/keleustes/airshipctl v1.16.24 h1:URfn0OzJldl8B7OSdmBlAV7gbwl2+7vfo6ClsNNIGoM=
-github.com/keleustes/airshipctl v1.16.24/go.mod h1:T50796R9RZ+KExBHplbZBLW9hyb4PP+53yWxWK7XZKQ=
+github.com/keleustes/airshipctl v1.16.25 h1:n9r6nUbyJ+iPH2D8wE7P8hA2N+6twRAHLaNqwGbTIpk=
+github.com/keleustes/airshipctl v1.16.25/go.mod h1:YtombQfwasalZt2SkbcqtLkG3nNp+iuN+GIy3AZaduM=
 github.com/keleustes/argo v1.16.20 h1:Qld7PsujDl2KIbf1iCgTEAlCffdVxiod04yATpoCxFA=
 github.com/keleustes/argo v1.16.20/go.mod h1:JwCWMthjlU4tf/IXhhhIbBK5ZgF1OqyMhXBRI9OE7I8=
 github.com/keleustes/armada-crd v1.16.20 h1:03ioPB8SMolKipxacdlbvnp/ww1mwxeQ1pBHQ02pE54=
@@ -574,10 +576,10 @@ github.com/keleustes/controller-runtime v1.16.20 h1:YtO2JW0bmmkm+dox4FyyjKFXb7nz
 github.com/keleustes/controller-runtime v1.16.20/go.mod h1:KIR9ukewTstf6A4ewvCSAg2tarz6cjSHJdjxCBU+YLg=
 github.com/keleustes/helm v1.16.20 h1:r2Src1QsEHJl+updhGMn4gbJ5BB2j7Z5gPdIGDkXeFk=
 github.com/keleustes/helm v1.16.20/go.mod h1:3ljI9soWRH9hO+bAR2fF69o4iAPvoygSU9/+HOToC54=
-github.com/keleustes/kind v1.16.24 h1:YvG7wVxE+6Vw7N3WA7fZ6/VkiG34kPcjZyTKp/1Zg+o=
-github.com/keleustes/kind v1.16.24/go.mod h1:8aXrQ4r9AfAbyNLxgwYVpCoaxfatMrB025kiySwt12Q=
-github.com/keleustes/kustomize/v3 v3.16.26 h1:U6knoE6t78ZZsmgpEf7JbPzbIo5z9XktmAAWwBmpTRo=
-github.com/keleustes/kustomize/v3 v3.16.26/go.mod h1:nWqx+ePxXWQyVv4LHOAjPE0K1jeBCIe78SqORmW3vj4=
+github.com/keleustes/kind v1.16.25 h1:gVfB21ISwQH+kIASrecIW0Fd/Up0BeKoRcbLVYn7Vyo=
+github.com/keleustes/kind v1.16.25/go.mod h1:7Rbfho4Vvd6RbqVAgw7fN+VUJHstZU2P+NDNnADqZrM=
+github.com/keleustes/kustomize/api v1.16.2 h1:QHCBoQCa4fhWPZWRiIyvvs+o4z5o5c/poJtNodpHqyQ=
+github.com/keleustes/kustomize/api v1.16.2/go.mod h1:bRepbTxpaQWxfEBliCjLfwYwtY7TJeqyiABOwFvxqfA=
 github.com/kevinburke/ssh_config v0.0.0-20190725054713-01f96b0aa0cd/go.mod h1:CT57kijsi8u/K/BOFA39wgDQJ9CxiF4nAY/ojJ6r6mM=
 github.com/keybase/go-crypto v0.0.0-20190416182011-b785b22cc757/go.mod h1:ghbZscTyKdM07+Fw3KSi0hcJm+AlEUWj8QLlPtijN/M=
 github.com/kisielk/errcheck v1.1.0/go.mod h1:EZBBE59ingxPouuu3KfxchcWSUPOHkagtvWXihfKN4Q=
@@ -815,6 +817,7 @@ github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529/go.mod h1:DxrIzT+xaE7yg
 github.com/seccomp/libseccomp-golang v0.9.1/go.mod h1:GbW5+tmTXfcxTToHLXlScSlAvWlF4P2Ca7zGrPiEpWo=
 github.com/sergi/go-diff v1.0.0/go.mod h1:0CfEIISq7TuYL3j771MWULgwwjU+GofnZX9QAmXWZgo=
 github.com/sethgrid/pester v0.0.0-20180227223404-ed9870dad317/go.mod h1:Ad7IjTpvzZO8Fl0vh9AzQ+j/jYZfyp2diGwI8m5q+ns=
+github.com/shurcooL/sanitized_anchor_name v1.0.0 h1:PdmoCO6wvbs+7yrJyMORt4/BmY5IYyJwS/kOiWx8mHo=
 github.com/shurcooL/sanitized_anchor_name v1.0.0/go.mod h1:1NzhyTcUVG4SuEtjjoZeVRXNmyL/1OwPU0+IJeTBvfc=
 github.com/signalfx/com_signalfx_metrics_protobuf v0.0.0-20170330202426-93e507b42f43/go.mod h1:muYA2clvwCdj7nzAJ5vJIXYpJsUumhAl4Uu1wUNpWzA=
 github.com/signalfx/gohistogram v0.0.0-20160107210732-1ccfd2ff5083/go.mod h1:adPDS6s7WaajdFBV9mQ7i0dKfQ8xiDnF9ZNETVPpp7c=
