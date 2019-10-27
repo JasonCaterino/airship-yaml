@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: default
 
 resources:
-- ../common
+- ../common/kustomizeconfig
+- ../common/variables
 - hosts.yaml

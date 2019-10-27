@@ -1,5 +1,14 @@
 apiVersion: v1
 data:
+  CLUSTER_NAME: test1
+  KUBERNETES_VERSION: 1.16.2
+kind: ConfigMap
+metadata:
+  name: global
+  namespace: default
+---
+apiVersion: v1
+data:
   password: MWYyZDFlMmU2N2Rm
   username: YWRtaW4=
 kind: Secret

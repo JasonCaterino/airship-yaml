@@ -1,5 +1,6 @@
 resources:
-- ./global.yaml
+- ./common/kustomizeconfig
+- ./common/variables
 - ./cluster
 - ./controlplane
 - ./metal3plane
