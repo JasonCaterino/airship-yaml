@@ -3,6 +3,7 @@ module opendev.org/airship/airship-yaml/tools
 go 1.13
 
 require (
+	github.com/Sirupsen/logrus v0.0.0-00010101000000-000000000000 // indirect
 	github.com/instrumenta/kubeval v0.0.0-20190918223246-8d013ec9fc56
 	opendev.org/airship/airshipctl v0.0.0
 	sigs.k8s.io/kind v0.5.1
@@ -44,7 +45,7 @@ replace (
 	k8s.io/metrics => k8s.io/metrics v0.0.0-20191016113814-3b1a734dba6e
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.0.0-20191016112829-06bb3c9d77c9
 
-	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.2-keleustes.20191102
+	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.2-keleustes.20191109
 
 	sigs.k8s.io/cluster-api => github.com/keleustes/cluster-api v1.16.2-keleustes.20191102
 	sigs.k8s.io/cluster-api-provider-aws => github.com/keleustes/cluster-api-provider-aws v1.16.2-keleustes.20191102
@@ -52,5 +53,5 @@ replace (
 	sigs.k8s.io/cluster-api-provider-openstack => github.com/keleustes/cluster-api-provider-openstack v1.16.2-keleustes.20191102
 	sigs.k8s.io/controller-runtime => github.com/keleustes/controller-runtime v1.16.2-keleustes.20191102
 	sigs.k8s.io/kind => github.com/keleustes/kind v1.16.2-keleustes.20191102
-	sigs.k8s.io/kustomize/api => github.com/keleustes/kustomize/api v1.16.2-keleustes.20191102
+	sigs.k8s.io/kustomize/api => github.com/keleustes/kustomize/api v1.16.2-keleustes.20191109
 )

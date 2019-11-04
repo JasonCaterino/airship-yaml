@@ -211,8 +211,10 @@ github.com/docker/docker v1.4.2-0.20190327010347-be7ac8be2ae0/go.mod h1:eEKB0N0r
 github.com/docker/docker v1.13.1 h1:IkZjBSIc8hBjLpqeAbeE5mca5mNgeatLHBy3GO78BWo=
 github.com/docker/docker v1.13.1/go.mod h1:eEKB0N0r5NX/I1kEveEz05bcu8tLC/8azJZsviup8Sk=
 github.com/docker/go-connections v0.3.0/go.mod h1:Gbd7IOopHjR8Iph03tsViu4nIes5XhDvyHbTtUxmeec=
+github.com/docker/go-connections v0.4.0 h1:El9xVISelRB7BuFusrZozjnkIM5YnzCViNKohAFqRJQ=
 github.com/docker/go-connections v0.4.0/go.mod h1:Gbd7IOopHjR8Iph03tsViu4nIes5XhDvyHbTtUxmeec=
 github.com/docker/go-units v0.3.3/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
+github.com/docker/go-units v0.4.0 h1:3uh0PgVws3nIA0Q+MwDC8yjEPf9zjRfZZWXZYDct3Tw=
 github.com/docker/go-units v0.4.0/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
 github.com/docker/libnetwork v0.0.0-20180830151422-a9cd636e3789/go.mod h1:93m0aTqz6z+g32wla4l4WxTrdtvBRmVzYRkYvasA5Z8=
 github.com/docker/spdystream v0.0.0-20160310174837-449fdfce4d96/go.mod h1:Qh8CwZgvJUkLughtfhJv5dyTYa91l1fOUCrgjqmcifM=
@@ -563,8 +565,8 @@ github.com/juju/testing v0.0.0-20190429233213-dfc56b8c09fc/go.mod h1:63prj8cnj0t
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
 github.com/karrick/godirwalk v1.7.5/go.mod h1:2c9FRhkDxdIbgkOnCEvnSWs71Bhugbl46shStcFDJ34=
 github.com/karrick/godirwalk v1.10.12/go.mod h1:RoGL9dQei4vP9ilrpETWE8CLOZ1kiN0LhBygSwrAsHA=
-github.com/keleustes/airshipctl v1.16.2-keleustes.20191102 h1:ZcJ9oKuGUqraP+5dj+0GPOLmc43I2nGQt+5CMIAW6Sg=
-github.com/keleustes/airshipctl v1.16.2-keleustes.20191102/go.mod h1:928zdiDvhwVdtbZ0KFWB6yOM5nhrybKHyWe+F8FVCKQ=
+github.com/keleustes/airshipctl v1.16.2-keleustes.20191109 h1:DVvIgjtXGnQnAkid1j3nV6+DMQQF/ST/va3NyNOND9g=
+github.com/keleustes/airshipctl v1.16.2-keleustes.20191109/go.mod h1:cufJFbtvZ/WwXb+mrYIGTdGf4LFLe48HGaBO00PqXaQ=
 github.com/keleustes/argo v1.16.2-keleustes.20191102 h1:nln7AA3lHnQe4ofk9Kbxcudy22tbAxhbZwZZY8PQ6S8=
 github.com/keleustes/argo v1.16.2-keleustes.20191102/go.mod h1:7alM79VAcRAQ2r9qxCPxcIjxaosQb47XOhCa9wBW+HA=
 github.com/keleustes/armada-crd v1.16.2-keleustes.20191102 h1:FqKI+1tUjII5CyCzLRcXtYjGk0L5Mk/3WGvsDnGOK0w=
@@ -585,8 +587,8 @@ github.com/keleustes/helm v1.16.2-keleustes.20191102 h1:9zIuVytml3zgHYUVjuXaeYUB
 github.com/keleustes/helm v1.16.2-keleustes.20191102/go.mod h1:VAcuWqtAIBOw9O4sHfOTKmyjJb6v4BHnBCn6FuFqguo=
 github.com/keleustes/kind v1.16.2-keleustes.20191102 h1:Wa8BWtfw4H9gJwU8BuqSVwuLJlUQ5fNB7fN/oUvoF9o=
 github.com/keleustes/kind v1.16.2-keleustes.20191102/go.mod h1:7Rbfho4Vvd6RbqVAgw7fN+VUJHstZU2P+NDNnADqZrM=
-github.com/keleustes/kustomize/api v1.16.2-keleustes.20191102 h1:9q1dTNVIE+FVR+G9hlgO+s7KTShoxzTB/1LNxm2EVYA=
-github.com/keleustes/kustomize/api v1.16.2-keleustes.20191102/go.mod h1:bRepbTxpaQWxfEBliCjLfwYwtY7TJeqyiABOwFvxqfA=
+github.com/keleustes/kustomize/api v1.16.2-keleustes.20191109 h1:4Tm1NZoN9prfpNFd1e9XN31rDIjouQoaS5gV60zzTy0=
+github.com/keleustes/kustomize/api v1.16.2-keleustes.20191109/go.mod h1:yzKCKCm5o37tX48VHxikqbE4lJKHENBGdiLog7DfLys=
 github.com/kevinburke/ssh_config v0.0.0-20190725054713-01f96b0aa0cd/go.mod h1:CT57kijsi8u/K/BOFA39wgDQJ9CxiF4nAY/ojJ6r6mM=
 github.com/keybase/go-crypto v0.0.0-20190416182011-b785b22cc757/go.mod h1:ghbZscTyKdM07+Fw3KSi0hcJm+AlEUWj8QLlPtijN/M=
 github.com/kisielk/errcheck v1.1.0/go.mod h1:EZBBE59ingxPouuu3KfxchcWSUPOHkagtvWXihfKN4Q=
@@ -1029,7 +1031,6 @@ golang.org/x/net v0.0.0-20190620200207-3b0461eec859/go.mod h1:z5CRVTTTmAJ677TzLL
 golang.org/x/net v0.0.0-20190724013045-ca1201d0de80/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20190812203447-cdfb69ac37fc/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
-golang.org/x/net v0.0.0-20190923162816-aa69164e4478/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20191007182048-72f939374954 h1:JGZucVF/L/TotR719NbujzadOZ2AgnYlqphQGHDCKaU=
 golang.org/x/net v0.0.0-20191007182048-72f939374954/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20191021144547-ec77196f6094 h1:5O4U9trLjNpuhpynaDsqwCk+Tw6seqJz1EbqbnzHrc8=
@@ -1086,9 +1087,8 @@ golang.org/x/sys v0.0.0-20190624142023-c5567b49c5d0/go.mod h1:h1NjWce9XRLGQEsW7w
 golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20190726091711-fc99dfbffb4e/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20190902133755-9109b7679e13/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20190911201528-7ad0cfa0b7b5 h1:SW/0nsKCUaozCUtZTakri5laocGx/5bkDSSLrFUsa5s=
 golang.org/x/sys v0.0.0-20190911201528-7ad0cfa0b7b5/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
-golang.org/x/sys v0.0.0-20190922100055-0a153f010e69 h1:rOhMmluY6kLMhdnrivzec6lLgaVbMHMn2ISQXJeJ5EM=
-golang.org/x/sys v0.0.0-20190922100055-0a153f010e69/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.0.0-20160726164857-2910a502d2bf/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.0.0-20180810153555-6e3c4e7365dd/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
