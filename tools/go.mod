@@ -20,6 +20,7 @@ replace (
 
 	github.com/argoproj/argo => github.com/keleustes/argo v1.16.2-keleustes.20191102
 	github.com/colinmarc/hdfs => github.com/colinmarc/hdfs v0.0.0-20180802165501-48eb8d6c34a9
+	github.com/docker/docker => github.com/docker/docker v0.7.3-0.20190327010347-be7ac8be2ae0
 	github.com/ghodss/yaml => github.com/ghodss/yaml v0.0.0-20180820084758-c7ce16629ff4
 
 	k8s.io/api => k8s.io/api v0.0.0-20191016110408-35e52d86657a
@@ -45,7 +46,7 @@ replace (
 	k8s.io/metrics => k8s.io/metrics v0.0.0-20191016113814-3b1a734dba6e
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.0.0-20191016112829-06bb3c9d77c9
 
-	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.2-keleustes.20191109
+	opendev.org/airship/airshipctl => github.com/keleustes/airshipctl v1.16.2-keleustes.20191117
 
 	sigs.k8s.io/cluster-api => github.com/keleustes/cluster-api v1.16.2-keleustes.20191102
 	sigs.k8s.io/cluster-api-provider-aws => github.com/keleustes/cluster-api-provider-aws v1.16.2-keleustes.20191102
@@ -53,5 +54,5 @@ replace (
 	sigs.k8s.io/cluster-api-provider-openstack => github.com/keleustes/cluster-api-provider-openstack v1.16.2-keleustes.20191102
 	sigs.k8s.io/controller-runtime => github.com/keleustes/controller-runtime v1.16.2-keleustes.20191102
 	sigs.k8s.io/kind => github.com/keleustes/kind v1.16.2-keleustes.20191102
-	sigs.k8s.io/kustomize/api => github.com/keleustes/kustomize/api v1.16.2-keleustes.20191109
+	sigs.k8s.io/kustomize/api => github.com/keleustes/kustomize/api v1.16.2-keleustes.20191117
 )
